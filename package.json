@@ -43,6 +43,7 @@
     "clean": "rm -rf ./artifacts/ ./cache/",
     "compile": "hardhat compile",
     "hash": "hardhat run scripts/computePairInitCodeHash.ts",
+    "test": "hardhat test",
     "prepublishOnly": "npm run compile"
   }
 }
