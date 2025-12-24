@@ -1,48 +1,49 @@
 {
-  "name": "@uniswap/v2-core",
-  "description": "🎛 Core contracts for the UniswapV2 protocol",
-  "version": "1.0.1",
-  "homepage": "https://uniswap.org",
+  "name": "@juiceswapxyz/v2-core",
+  "description": "🧃 Core contracts for the JuiceSwap V2 protocol",
+  "version": "1.0.0",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://juiceswap.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Uniswap/uniswap-v2-core"
+    "url": "https://github.com/JuiceSwapXyz/v2-core"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
+    "juiceswap",
     "uniswap",
     "ethereum",
     "v2",
     "core",
-    "uniswap-v2"
+    "dex",
+    "amm"
   ],
   "files": [
     "contracts",
-    "build"
+    "artifacts/contracts/UniswapV2Factory.sol/UniswapV2Factory.json",
+    "artifacts/contracts/UniswapV2Pair.sol/UniswapV2Pair.json",
+    "artifacts/contracts/UniswapV2ERC20.sol/UniswapV2ERC20.json",
+    "artifacts/contracts/interfaces/**/*.json",
+    "artifacts/contracts/libraries/**/*.json",
+    "!artifacts/contracts/**/*.dbg.json"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=18"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.6",
-    "@types/mocha": "^5.2.7",
-    "chai": "^4.2.0",
-    "ethereum-waffle": "^2.4.1",
-    "ethereumjs-util": "^6.2.0",
-    "mocha": "^6.2.2",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "solc": "0.5.16",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.3"
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@types/node": "^20.0.0",
+    "hardhat": "^2.19.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
   },
   "scripts": {
-    "lint": "yarn prettier ./test/*.ts --check",
-    "lint:fix": "yarn prettier ./test/*.ts --write",
-    "clean": "rimraf ./build/",
-    "precompile": "yarn clean",
-    "compile": "waffle .waffle.json",
-    "pretest": "yarn compile",
-    "test": "mocha",
-    "prepublishOnly": "yarn test"
-  },
-  "license": "GPL-3.0-or-later"
+    "clean": "rm -rf ./artifacts/ ./cache/",
+    "compile": "hardhat compile",
+    "hash": "hardhat run scripts/computePairInitCodeHash.ts",
+    "test": "hardhat test",
+    "prepublishOnly": "npm run compile"
+  }
 }
