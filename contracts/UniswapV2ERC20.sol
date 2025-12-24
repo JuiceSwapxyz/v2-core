@@ -1,13 +1,18 @@
 pragma solidity =0.5.16;
 
+// JuiceSwap V2 - Fork of Uniswap V2
+// Source: https://github.com/Uniswap/v2-core (v1.0.1)
+// Changes: LP token branding only (name, symbol)
+
 import './interfaces/IUniswapV2ERC20.sol';
 import './libraries/SafeMath.sol';
 
 contract UniswapV2ERC20 is IUniswapV2ERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'Uniswap V2';
-    string public constant symbol = 'UNI-V2';
+    // JuiceSwap: Branded LP token metadata
+    string public constant name = 'JuiceSwap V2';
+    string public constant symbol = 'JUICE-V2';
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;
